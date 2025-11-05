@@ -1,4 +1,3 @@
-import bcrypt from "bcryptjs";
 import { User } from "../user/user.model.js";
 import httpStatus from "http-status";
 import ApiError from "../../errors/ApiError.js";
@@ -8,17 +7,10 @@ import { JWTHelpers } from "../../helpers/jwtHelpers.js";
 // ================= LOGIN =================
 const loginUser = async (payload) => {
     //  Find user by email
-    const userData = await User.findOne({ email: payload.email });
+    const userData = await User.findOne({ phone: payload.phone });
     if (!userData) {
       throw new ApiError(httpStatus.NOT_FOUND, "User not found");
     }
-
-    //  Check password
-    const isCorrectPassword = await bcrypt.compare(payload.password, userData.password);
-    if (!isCorrectPassword) {
-      throw new ApiError(httpStatus.UNAUTHORIZED, "Incorrect password");
-    }
-
     //  Generate access token
     const accessToken = JWTHelpers.generateToken(
       {

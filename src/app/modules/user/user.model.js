@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
     phone: { type: String, required: true, unique: true },
     otp: { type: String },
     otpExpiresAt: { type: Date },
+    isVerified: { type: Boolean, default: false },
     role: {
         type: String,
         enum: ["customer", "agent", "dispatcher", "technician", "admin"],

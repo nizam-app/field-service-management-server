@@ -24,8 +24,7 @@ const loginUser = async (payload) => {
       {
         id: userData._id,
         name: userData.name,
-        email: userData.email,
-        role: userData.role,
+        phone: userData.phone,
       },
       config.jwt_access_secret,
       config.jwt_access_expires_in || "7d"
@@ -37,9 +36,7 @@ const loginUser = async (payload) => {
       user: {
         id: userData._id,
         name: userData.name,
-        email: userData.email,
-        role: userData.role,
-        createdAt: userData.createdAt,
+        phone: userData.phone,
       },
     };
 };

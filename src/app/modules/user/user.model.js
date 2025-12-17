@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     isVerified: { type: Boolean, default: false },
     role: {
         type: String,
-        enum: ["customer", "agent", "dispatcher", "technician", "admin"],
+        enum: ["customer", "call-center-agent", "dispatcher", "freelancer-technician", "internal-technician", "admin"],
         default: "customer",
         required: true,
     },
